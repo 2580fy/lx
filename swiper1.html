@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" href="swiper.min.css">
+
+		<style>
+         *{
+         	margin: 0;
+         	padding: 0;
+         }
+
+         html,body{
+
+         	width: 100%;
+         	height: 100%;
+         }
+
+         .swiper-container{
+         	width: 100%;
+         	height: 300px;
+         }
+
+         .swiper-wrapper{
+         	width: 100%;
+         	height: 100%;
+         }
+
+         .swiper-slide{
+         	width: 100%;
+         	/*height: 50%;*/
+
+         	height: 100%;
+         }
+
+         .swiper-slide img{
+         	width: 100%;
+         	height: 100%;
+         }
+
+      /*  .swiper-pagination-bullet-active{
+        	background-color: red;
+        }*/
+
+        .swiper-pagination-bullet{
+        	background-color: purple;
+        	width: 20px;
+        	height: 5px;
+        	border-radius: 0;
+
+        }
+
+       
+		</style>
+	</head>
+	
+	<body>
+		<script src="swiper.min.js"></script>
+
+		<div class="swiper-container"  id="swiper1">
+
+           <div class="swiper-wrapper">
+               <div class="swiper-slide">
+
+                <!-- 懒加载 -->
+               <img data-src="banner1.png" class="swiper-lazy">
+               </div>
+               <!-- 单独设置某一个slide的播放时长 -->
+               <div class="swiper-slide"  data-swiper-autoplay="3000">
+               <img data-src="banner2.png" class="swiper-lazy">
+               </div>
+               <div class="swiper-slide">
+               	<img data-src="banner3.png" class="swiper-lazy">
+               </div>
+
+               <div class="swiper-slide">
+               	<img data-src="banner4.png" class="swiper-lazy">
+               </div>
+           </div>
+            <!-- 分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 前进按钮 -->  
+            <!--提供黑白蓝三种 swiper-button-black  
+            swiper-button-white -->
+
+            <div class="swiper-button-next"></div>
+
+            <!-- 后退按钮 -->
+            <div class="swiper-button-prev"></div>
+
+            <!-- 滚动条 -->
+
+            <!-- <div class="swiper-scrollbar"></div> -->
+
+	    </div>		
+
+    
+        <!--   <div class="swiper-container" id="swiper2">
+
+           <div class="swiper-wrapper">
+               <div class="swiper-slide">
+
+                 懒加载 
+               <img src="banner1.png" class="swiper-lazy">
+               </div>
+                单独设置某一个slide的播放时长 
+               <div class="swiper-slide"  data-swiper-autoplay="3000">
+               <img src="banner2.png" class="swiper-lazy">
+               </div>
+               <div class="swiper-slide">
+                <img src="banner3.png" >
+               </div>
+
+               <div class="swiper-slide">
+                <img src="banner4.png" >
+               </div>
+           </div>
+           
+
+      </div>    -->
+         
+
+         <button onclick="getIndex()">当前下标</button>
+
+         <button onclick="nextSlide()">下一个</button>
+                  <button onclick="prevSlide()">上一个</button>
+
+       <script>
+
+
+       //swiper 初始化
+       
+       // var timer = setTimeout(function(){
+
+        var swiper1 = new Swiper("#swiper1",{
+
+        	//自动播放 *
+  //       	autoplay:1000,
+  //       	//初始索引
+  //       	initialSlide:2,
+  //           //滚动方向 *
+  //       	// direction:"vertical",
+  //       	//滚动速度 *
+  //       	speed:500,
+  //          //用户操作后是否停止自动播放 默认是true  *
+  //       	autoplayDisableOnInteraction:false,
+            
+  //           //是否最后一个slide 停止播放  loop 为true时  失去作用
+  //       	// autoplayStopOnLast:true,
+  //           //光标手掌形状
+  //            grabCursor:true,
+  //           //自动适应高度
+  //            // autoHeight:true,
+  //            //分页器  *
+  //            pagination:".swiper-pagination",
+  //            //分页器样式 fraction 分页式  progress 进度条  bullets 圆点
+  //            // paginationType:"fraction",
+            
+  //           //分页器是否可以点击  *
+  //           paginationClickable:true,
+  //           //点击轮播 分页器隐藏  
+  //           paginationHide:true,
+  //           //自定义分页式分页器样式 
+  //     //       paginationFractionRender: function (swiper, currentClassName, totalClassName) {
+  //     // return '<span class="' + currentClassName + '"></span>' +
+             
+  //     //         '<span class="' + totalClassName + '"></span>';
+  //     //           }
+    
+  //        //自定义圆点分页器
+  //     //           paginationBulletRender: function (swiper, index, className) {
+  //     // return '<span class="' + className + '">' + (index + 1) + '</span>';
+  // // }
+
+
+  //         //前进按钮 *
+  //         nextButton:".swiper-button-next",
+          
+  //         //后退按钮 *
+  //         prevButton:".swiper-button-prev",
+
+          
+  //         //滚动条
+  //         scrollbar:".swiper-scrollbar",
+  //         //是否隐藏滚动条
+  //         scrollbarHide : false,
+  //         //是否可以拖拽
+  //         scrollbarDraggable : true ,
+          
+  //         //是否拖拽后自动贴合 
+  //         scrollbarSnapOnRelease:true,
+  //         //一屏可以显示的slides数量  auto  和  数字   *
+  //         // slidesPerView:2,
+          
+  //         //居中
+  //         // centeredSlides:true
+           
+  //         //多少个slide为一组
+  //         // slidesPerGroup:2,
+  //         //slide之间的间隔
+  //         spaceBetween:10,
+         
+  //         //设置列数  （调slide的css样式高） *
+  //         // slidesPerColumn:2
+           
+  //         // 切换效果  slide（默认） fade  cube  coverflow flip  *
+  //         // effect:"cube",
+  //         //可选设置
+  //         // cube:{
+  //         // 	slideShadows:true,
+  //         // 	shadow:true,
+  //         // 	shadowOffset:80,
+  //         // 	shadowScale: 0.6
+
+  //         // },
+  //         //是否阻止默认事件  默认是true
+  //         preventClicks:false,
+  //         //是否阻止冒泡  默认是true
+  //         preventClicksPropagation:false,
+          
+  //         //是否滑动到点击的slide并居中显示  默认是false
+  //         slideToClickedSlide:true,
+  //         //是否开启键盘控制
+  //         keyboardControl:true,
+  //         //是否开始鼠标滑轮控制
+  //         mousewheelControl:true,   
+  //         //是否强制加载所有图片  默认是true  关闭后可做部分加载
+  //         preloadImages:false,
+  //         //开启懒加载模式
+          lazyLoading:true,  
+  //         //开启无限循环模式
+  //         loop:true,
+  //         //是否可以缩放
+  //         zoom:true
+
+          onInit:function(){
+            // alert("初始化完成")
+          },
+          //触摸结束
+          onTouchEnd:function(swiper){
+
+            console.log(swiper.activeIndex)
+
+
+              
+          },
+          //slide切换结束
+          onSlideChangeEnd:function(swiper){
+            console.log(swiper.activeIndex)
+            //当前的真实下标
+            console.log(swiper.realIndex)
+     
+          },
+         //点击触发
+          onTap:function(swiper){
+             
+             var d = swiper.clickedSlide;
+
+             // d.style.height = "100px";
+          }
+        })
+      
+      function getIndex(){
+           //当前活跃的下标
+           alert(swiper1.activeIndex)
+          //是否处于开始位置
+           alert(swiper1.isBegining)
+
+           // isEnd 是否处于末尾位置
+
+           //clickedIndex 返回点击的索引
+
+           //clickedSlide 点击的slide
+
+
+         }
+
+         //切换下一下
+         function nextSlide(){
+
+            swiper1.slideNext()
+         }
+
+
+         // var swiper2 = new Swiper("#swiper2",{
+
+         // })
+
+
+         // swiper1.params.control = swiper2;
+
+         // swiper2.params.control = swiper1;
+
+         
+        
+        
+
+       
+       </script>
+	</body>
+</html>
